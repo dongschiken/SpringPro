@@ -25,7 +25,7 @@ public class EmpDTO {
 	private Date hiredate;
 	private int sal;
 	private double comm;
-	private int dept;
+	private int deptno;
 
 	
 }

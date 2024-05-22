@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import lombok.extern.log4j.Log4j;
 
 // ajax 처리 컨트롤러
@@ -23,7 +22,7 @@ public class ScottRestController {
 	@Autowired
 	private DeptMapper deptMapper;
 	
-	 //@RequestMapping(value = "/scott/dept", method = RequestMethod.POST)
+	//@RequestMapping(value = "/scott/dept", method = RequestMethod.POST)
 	@PostMapping("/new")
 	public ResponseEntity<String> insertDept(@RequestBody DeptDTO dto){
 		log.info("> scottRestController insertDept()...");
@@ -31,7 +30,6 @@ public class ScottRestController {
 										
 		return insertResult == 1 ? 		// 성공했을 경우 SUCCESS								// 실패했을 경우 500번 ( 상태값 ) 리턴
 				new ResponseEntity<>("SUCCESS", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR) ;
-		
 	}
 	
 	@DeleteMapping(value = "/{deptno}")				// deptno라는 변수를 받아서 int deptno에 담는다.
@@ -40,8 +38,7 @@ public class ScottRestController {
 		int deleteResult = this.deptMapper.deleteDept(deptno);
 										
 		return deleteResult == 1 ? 		// 성공했을 경우 SUCCESS								// 실패했을 경우 500번 ( 상태값 ) 리턴
-				new ResponseEntity<>("SUCCESS", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR) ;
-		
+				new ResponseEntity<>("SUCCESS", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR) ;		
 	}
 	
 }

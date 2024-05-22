@@ -244,6 +244,19 @@
 	           
 	        } // if
 	     });
+	    
+	    
+	    $("#search").on("click", function(){
+	    	if( !$("tbody :checkbox:checked").length){
+	    		alert( '부서체크 하세요' );
+	    		return;
+	    	} 
+	    	
+	    	$("form").submit();
+	    })
+	    
+	    
+	    
 	})
 	
 </script>
