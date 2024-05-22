@@ -84,7 +84,6 @@
 				"method":"GET"
 				}).empty().submit();
 		}
-		
 	})
 </script>
 </body>
