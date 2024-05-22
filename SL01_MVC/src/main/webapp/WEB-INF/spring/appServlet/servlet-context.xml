@@ -19,7 +19,7 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
-	</beans:bean>
+	</beans:bean>				<!-- 여기서 어디로 view를 응답해줄지 선언 .jsp로 응답 -->
 	
 	<context:component-scan base-package="org.doit.ik" />
 	

@@ -124,7 +124,7 @@
      <tbody>
          <c:forEach items="${ list }"  var="dto">
          <tr>
-            <td><input type="checkbox" data-deptno="${ dto.deptno }" value="${ dto.deptno }" name="deptno"></td>
+           <td><input type="checkbox" data-deptno="${ dto.deptno }" value="${ dto.deptno }" name="deptno"></td>
            <td>${ dto.deptno }</td>
            <td>${ dto.dname }<span class="badge right red">${ dto.numberOfEmps }</span></td>
            <td>${ dto.loc }</td>
