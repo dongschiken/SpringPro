@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+<!-- 	
+
+	RecordViewImpl rvi = new RecordViewImpl(); 
+	rvi.setRecord(record);  
+-->
+	<!-- bean객체 이름 record -->
+	<bean id="record" class="org.doit.ik.di3.RecordImpl3" ></bean>
+	<bean id="rvi" class="org.doit.ik.di3.RecordViewImpl3" >
+				<!-- setRecord를 record로 바꾼다. -->
+		<!-- <property name="record" ref="record"></property> -->
+		<property name="record" >
+			<ref bean="record"/>
+		</property>	
+		
+		<!-- 생성자를 통한 주입  -->	
+		<!-- <constructor-arg ref="record"></constructor-arg> -->
+	</bean>
+	
+</beans>

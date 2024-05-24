@@ -1,0 +1,84 @@
+네, 글자가 깨진 내용을 한국어로 복원하여 다시 정리해드리겠습니다:
+
+1. **설치** 및 **기본 설정**
+   - [STS 3]를 사용하고, STS 4(Spring Boot)는 사용하지 않습니다.
+   - SpringClass 프로젝트를 생성합니다.
+   - STS 3에 Lombok을 설치합니다.
+   - STS 3 설정 및 저장소(Maven) 설정과 프로젝트 설정
+     1) 설정값: SL00_DefaultSettings
+     2) 최상위 패키지: domain, org.doit.ik
+     3) 환경 설정
+
+2. **pom.xml**
+   - JSP 라이브러리 의존성 추가 (jar 파일 추가)
+   - pom.xml 파일을 수정하여 필요한 의존성을 추가합니다.
+     ```xml
+     <dependency>
+       <!-- 의존성 설정 -->
+     </dependency>
+     ```
+     Maven 중앙 저장소에서 다운로드 받아 `.m2/repository` 디렉토리에 저장됩니다.
+     필요한 의존성을 추가하여 설정을 완료합니다.
+
+3. **Spring MVC 설정**
+   - **web.xml**
+     - MVC 서블릿 설정
+     - `servlet-context.xml`에서 추가 설정 처리
+     - HomeController 설정 및 / 경로로 home() 핸들러 메소드 매핑
+   - **/WEB-INF/spring/root-context.xml**
+     - 애플리케이션 컨텍스트 설정
+   - **/WEB-INF/spring/security-context.xml**
+     - 보안 컨텍스트 설정
+
+4. **JSP 기반의 MVC 설정**
+   - **web.xml**
+     - MVC 설정
+     - `commandHandler.java` 인터페이스와 process() 메소드 정의
+     - `commandHandler.properties` 파일 설정
+       ```properties
+       list.do=ListHandler (MVC)
+       ```
+   - **Controller 설정**
+     - .init() 메소드에서 Map에 "요청 URL"과 처리 클래스 객체를 매핑합니다.
+   - list.do 요청 처리:
+     - 요청이 들어오면 doGet() 메소드에서 `ListHandler.process()` 메소드 호출
+   - **list.jsp** 페이지 반환
+
+5. **웹 애플리케이션**
+   - `webapp` 디렉토리의 resources 폴더 설정
+
+6. **예제**
+   - **home.jsp** 설정:
+     - 기본 MVC 처리
+     - http://localhost/time 요청 시 time.jsp 페이지 반환
+     ```html
+     <h3><a href="/time">/time</a></h3>
+     ```
+7. 웹 프로젝트 3Tier 
+1) 화면 계층 - Presentation Tier
+2) 비즈니스 계층 - Business Tier
+3) 데이터 계층 == 영속 계층 - persistence Tier
+
+org.doit.ik : 최상위 패키지
+	- config : 설정관련
+	- domai : VO, DTO 클래스
+	- persistence : DAO, MYBATIS 인터페이스, 클래스 (MAPEER)
+	- comtroller
+	- service
+	- excption
+	- aop
+	- util
+	- security
+	
+	
+1. 게시판의 검색기능
+	1) 단일 항목 검색 : 제목(t)/내용(c)/작성자(w) 검색
+	2) 다중 항목 검색 : 제목 + 내용("tc"), 제목 + 작성자("tw"), 제목 + 내용 + 작성자("tcw")
+	
+2. 검색 조건 - select , checkbox	type
+   검색어 - input		 			keyword
+   
+   
+1. 컴포넌트 스캔을 통한 빈 자동 등록
+	- org.doit.ik.di4 패키지 추가
+	- org.doit.ik.di4.test 패키지 추가
