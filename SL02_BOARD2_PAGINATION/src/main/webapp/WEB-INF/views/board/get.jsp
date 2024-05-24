@@ -62,10 +62,10 @@
          </tr>
        </tfoot>
      </table>
-     
      <input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }">
-       
-  </form>    
+     <input type='hidden' name='pageNum' value="${ criteria.pageNum }" id="pageNum">
+	 <input type='hidden' name='amount' value="${ criteria.amount }">  
+  </form> 
 </div>
 
 <script>
@@ -88,16 +88,24 @@
 				"method":"GET"
 				}).submit();
 			}
-			
-			// location.href="/board/remove?bno=2"
+		
 		}else if(operation === 'list'){
+			let pageNumTag = $("input[type='hidden'][name='pageNum']").clone();
+			let amountTag = $("input[type='hidden'][name='amount']").clone();
+			let pageNum = $("#pageNum").val();
 			formObj.attr({
 				"action":"/board/list",
 				"method":"GET"
-				}).empty().submit();
-		}
+				})
+				.empty()
+				.append( pageNumTag )
+				.append( amountTag )
+				.submit();
+		};
 		
-	})
+	});
+	
+
 </script>
 </body>
 </html>

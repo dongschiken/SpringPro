@@ -59,7 +59,9 @@ span.material-symbols-outlined {
 						<c:forEach items="${ list }" var="board">
 							<tr>
 								<td><c:out value="${ board.bno }" /></td>
-								 <td><a href="/board/get?bno=${ board.bno }"><c:out 
+								<%-- 								 <td><a href="/board/get?bno=${ board.bno }"><c:out 
+											value="${ board.title }" /></a></td> --%>
+								<td><a class="move" href="${ board.bno }"><c:out
 											value="${ board.title }" /></a></td>
 								<td><c:out value="${ board.writer }" /></td>
 								<td><fmt:formatDate value="${ board.regdate }"
@@ -72,9 +74,29 @@ span.material-symbols-outlined {
 				</c:choose>
 			</tbody>
 			<tfoot>
+				<tr>
+					<td colspan="5">
+						<div class="center">
+							<div class="pagination">
+								<c:if test="${ pageMaker.prev }">
+									<a href="${ pageMaker.startPage-1 }">&laquo;</a>
+								</c:if>
+								<c:forEach begin="${ pageMaker.startPage }" end="${  pageMaker.endPage }" step="1" var="num">
+									<a href="${ num }" class='${ num eq pageMaker.criteria.pageNum ? "active" : ""}'>${ num }</a>
+								</c:forEach>
+								<c:if test="${ pageMaker.next }">
+									<a href="${ pageMaker.endPage+1 }">&raquo;</a>
+								</c:if>
+							</div>
+						</div>
+					</td>
+				</tr>
 			</tfoot>
 		</table>
-
+		<form id="actionForm" action="/board/list" method="GET">
+			<input type='hidden' name='pageNum' value="${ pageMaker.criteria.pageNum }">
+			<input type='hidden' name='amount' value="${ pageMaker.criteria.amount }">
+		</form>
 	</div>
 
 <script>
@@ -90,7 +112,30 @@ span.material-symbols-outlined {
 			if( result === '' || history.state) return;
 			if(  parseInt(  result  ) > 0 ) alert( `\${result} 번이 등록되었습니다.` );
 		}
-	})
+		
+		// 1. 제목을 클릭하면 상세보기 페이지로 이동.
+		// href="3" 글번호
+		// /board/get?bno=&pageNum=&amount=&type=&keyword= 등등
+		var actionForm = $("#actionForm");
+		
+		$("a.move").on("click", function(event){
+			event.preventDefault();
+			
+			actionForm
+			.attr("action", "/board/get")
+			.append("<input type='hidden' name='bno' value='" + $(this).attr("href") +"'>")
+			.submit();
+		});
+		
+		$(".pagination a").on("click", function(event){
+			event.preventDefault();
+			let pageNum = $(this).attr("href");
+			actionForm
+				.find(":hidden[name=pageNum]").val(pageNum)
+				.end()
+				.submit();	
+		});
+	});
 </script>
 </body>
 </html>
