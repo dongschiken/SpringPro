@@ -124,7 +124,7 @@
      <tbody>
          <c:forEach items="${ list }"  var="dto">
          <tr>
-            <td><input type="checkbox" data-deptno="${ dto.deptno }" value="${ dto.deptno }" name="deptno"></td>
+           <td><input type="checkbox" data-deptno="${ dto.deptno }" value="${ dto.deptno }" name="deptno"></td>
            <td>${ dto.deptno }</td>
            <td>${ dto.dname }<span class="badge right red">${ dto.numberOfEmps }</span></td>
            <td>${ dto.loc }</td>
@@ -244,19 +244,6 @@
 	           
 	        } // if
 	     });
-	    
-	    
-	    $("#search").on("click", function(){
-	    	if( !$("tbody :checkbox:checked").length){
-	    		alert( '부서체크 하세요' );
-	    		return;
-	    	} 
-	    	
-	    	$("form").submit();
-	    })
-	    
-	    
-	    
 	})
 	
 </script>

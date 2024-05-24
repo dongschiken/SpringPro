@@ -78,8 +78,6 @@
 			// location.href="/board/modify?bno=2"
 			formObj.submit();
 			
-		}
-	// location.href="/board/remove?bno=2"
 		}else if(operation === 'list'){
 			formObj.attr({
 				"action":"/board/list",
