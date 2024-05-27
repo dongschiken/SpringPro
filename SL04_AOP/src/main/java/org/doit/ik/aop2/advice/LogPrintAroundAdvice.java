@@ -21,5 +21,4 @@ public class LogPrintAroundAdvice implements MethodInterceptor {
 		log.info("> " + methodName + "() 처리시간 " + sw.getTotalTimeMillis());
 		return result;
 	}
-
 }

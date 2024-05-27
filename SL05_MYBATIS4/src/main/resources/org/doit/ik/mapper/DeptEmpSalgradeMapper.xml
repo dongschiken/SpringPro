@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.doit.ik.mapper.DeptEmpSalgradeMapper">
+<!--// 부서정보만 select
+	List<DeptEmpSalgradeDTO> getDeptEmpInfo();
+	
+	// 해당 부서의 사원정보를 select 함수
+	List<EmpDTO> getEmpOfDept(); -->
+  	
+  	<select id="getDeptEmpInfo" resultType="DeptEmpSalgradeDTO">
+  		SELECT *
+  		FROM dept
+  		ORDER BY deptno ASC
+  	</select>
+  	<resultMap type="EmpDTO" id="empResultMap">
+  		<id property="empno" column="empno"/>
+  		<result property="ename" column="ename"/>
+  		<result property="job" column="job"/>
+  		<result property="hiredate" column="hiredate"/>
+  		<result property="sal" column="sal"/>  		
+  		<association property="salgradeDTO" javaType="SalgradeDTO">
+  			<result property="grade" column="grade"/>
+  		</association>
+  	</resultMap>
+  	<select id="getEmpOfDept" resultMap="empResultMap">
+  		SELECT empno, ename, job, hiredate, sal, grade
+  		FROM emp e JOIN salgrade s ON sal BETWEEN losal AND hisal
+  		WHERE deptno = #{deptno} 
+  	</select>
+</mapper>

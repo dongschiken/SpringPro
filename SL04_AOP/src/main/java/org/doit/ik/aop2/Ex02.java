@@ -17,6 +17,7 @@ public class Ex02 {
 		//Calculator calc = new CalculatorImpl2();
 		//System.out.println(calc.add(3, 5));
 		
+
 		
 		// 2. 우리가 등록한 가짜 객체 사용
 		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext("classpath:org/doit/ik/aop2/application-context2.xml");
