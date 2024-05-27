@@ -13,7 +13,7 @@ import lombok.Setter;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Component("record1")
+@Component
 public class RecordImpl4 implements Record4 {
 
 	

@@ -7,27 +7,20 @@ import javax.inject.Named;
 
 import org.springframework.stereotype.Component;
 
-import lombok.Data;
 
-@Data
-@Component // 만약 Component 로 Bean객체 등록하면 등록된 클래스의 앞글자를 소문자로 바꾼것이 이름으로 등록된다.
+@Component("recordView") // 만약 Component 로 Bean객체 등록하면 등록된 클래스의 앞글자를 소문자로 바꾼것이 이름으로 등록된다.
 // @Component("record1") 이런식으로 이름을 등록할 수도 있다.
 public class RecordViewImpl4 implements RecordView4 {
 
 	
 	@Inject
-	@Named(value = "record1") 
+	@Named(value = "recordImpl4")
 	private RecordImpl4 record = null;
 	
 	public RecordViewImpl4() {}
 	
-	// 1. 생성자를 통해서 외부에서 주입받는다.
-	public RecordViewImpl4(RecordImpl4 record) {
-		this.record = record;
-	}
 	
-
-
+	
 	@Override
 	public void input() {
 		try (Scanner sc = new Scanner(System.in)){

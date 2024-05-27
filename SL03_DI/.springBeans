@@ -9,6 +9,7 @@
 	<configs>
 		<config>src/main/resources/application-context.xml</config>
 		<config>src/main/java/org/doit/ik/di4/application-context4.xml</config>
+		<config>src/main/java/org/doit/ik/di3/application-context3.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/security-context.xml</config>
