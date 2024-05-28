@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssgssak.backend.shipping.mapper">
+  	
+  	<insert id="shipPalceInfoInsert" parameterType="com.ssgssak.backend.shipping.
+  	domain.ShippingPlaceInfoDTO">
+	
+  	INSERT INTO shippingPlaceInformation ( id, memid, addressNick, receiveMem, tel,
+  	postNum, defaultShipping, roadAddress, jibunAddress, detailAddress )
+	VALUES ( seqshipplaceinfo.NEXTVAL, #{memid}, #{addressnick}, #{receiveMem}, #{tel}, #{postnum},
+	 #{roadAddress}, #{jibunAddress}, #{detailAddress}, '기본배송지') 			
+  	
+  	</insert>
+  	
+  	<select id="shipPlaceInfoPageList" resultType="com.ssgssak.backend.shipping.
+  	domain.ShippingPlaceInfoDTO">
+  	
+  	
+  	
+  	</select>
+  	
+</mapper>
