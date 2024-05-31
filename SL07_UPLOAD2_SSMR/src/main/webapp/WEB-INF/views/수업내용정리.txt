@@ -1,0 +1,38 @@
+1. webapp 폴더
+	- cmr 폴더
+		- upload 파일 추가  <- 요청 URL 사용
+2. org.doit.ik 패키지
+	- HomeController.java 복사 + 붙이기
+	- CmrUploadController.java 컨트롤러 생성
+
+
+3. servlet-context.xml 
+   multipartResolver 빈 등록
+   
+  <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+      <beans:property name="maxUploadSize" value="-1"></beans:property> 
+      <beans:property name="maxInMemorySize" value="10240"></beans:property>
+      <beans:property name="defaultEncoding" value="ISO-8859-1"></beans:property>
+  </beans:bean>
+
+  
+ web.xml에서 
+ 
+ 		<multipart-config>
+         <location>C:\\temp</location>
+         <max-file-size>-1</max-file-size>
+         <max-request-size>-1</max-request-size>
+         <file-size-threshold>0</file-size-threshold>  
+      	</multipart-config>
+      	이부분 dispatcher에 추가
+이제 StandardServletMultipartResolver 빈 객체 설정.     
+
+1. SsmrUploadController.java 
+	- 단일 파일 처리
+	1) MultipartFile 처리
+	2) Message 커맨드 객체 처리
+	
+2. SsmrUploadController2.java
+	- 여러 파일 처리
+	1) MultipartFile 처리
+	2) Message2 커맨드 객체 처리 	

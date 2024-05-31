@@ -1,0 +1,14 @@
+1. org.doit.ik.domain 패키지 추가
+2. org.doit.ik.controller 패키지 추가
+3. org.doit.ik.persistence 패키지 추가
+4. org.doit.ik.service 패키지 추가
+
+
+
+- 스프링 시큐리티(보안)에서 POST 방식을 이용하는 경우
+  기본적으로 CSRF토큰이라는 것을 이용하게 된다.
+- CSRF토큰??
+  	- CSRF : Cross-Site Request Forgery
+  			- 사이트 간의    요청     위조		공격방지
+  	
+  	

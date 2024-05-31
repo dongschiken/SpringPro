@@ -1,0 +1,9 @@
+
+1. NoticeMapper.java
+2. MemberMapper.java
+
+
+p563 MyBatis 설명
+
+$ 는 입력된 값 그대로 들어오고
+# 은 입력된 값의 자료형에 따라서 ''이게 붙는다.

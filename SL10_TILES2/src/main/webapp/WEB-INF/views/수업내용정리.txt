@@ -1,0 +1,4 @@
+1. org.doit.ik.domain 패키지 추가
+2. org.doit.ik.controller 패키지 추가
+3. org.doit.ik.persistence 패키지 추가
+4. org.doit.ik.service 패키지 추가

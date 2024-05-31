@@ -1,0 +1,69 @@
+Spring Transaction
+
+1. transactionManager 등록 (root-context.xml)
+
+2. 트랜잭션 연습
+	1) 공지사항 새글 작성
+	2) 작성자 포인트 1 증가
+	
+3. 회원가입 - 문제 ...
+
+4. NoticeDao 인터페이스
+	게시글 작성 + 포인트 1증가 메서드 추가.
+5. 선언적 트랜잭션 처리
+	1) 설정파일 사용
+	<tx:advice>
+	2) @Transactional 애노테ㅌ이션 사용
+	
+	
+p511 트랜잭션 전파와 격리 레벨
+
+@T
+[ insertAndPointUpMember() ]
+1) insert() + 2) insert() 
+
+동일한 클래스 ( NoticeDaoImpl )안에서 다른 메서드를 호출하는 구조로는 insertAndOfRM[[L]]\
+Dao를 사용하던 안하던 service 클래스가 있다.
+
+MemberShipService
+MemberShipServiceimpl
+
+@T x
+msi.insertAndPointUpMember()
+	
+	@T o
+	nd.insert()     A + B 함수
+	
+	@T o
+	nd.insert()     A + B 함수
+	
+
+@T x
+msi.insertAndPointUpMember()
+	
+	@T o
+	nd.insert() 	A + B 함수
+	
+	
+트랜잭션의 전파와 [ 격리 레벨 (isolation)]
+	- 트랜잭션을 처리하는 과정 속에
+	두 개 이상의 트랜잭션이 동시에 같은 자원을 접근하게 되면 가각의
+	트랜잭션 처리를 어떻게 서로 영향받지 않게 처리할까?? -> 격리 수준
+	
+	- 실습
+	NoticeDao 인터페이스
+		- hitUp() 조회수 증가
+		- getHit() 조회수 얻어오는 메서드
+		
+	- 용어
+	1) Dirty Read 상황
+	@T [hitUp()]
+		[seq=16]
+		- 더러운 읽기
+	2) Non-repeatable Read 상황
+		- 반드시 2번을 하는 상황에서 트랜잭션 걸리는 상황
+		
+	3) Phantom Read 상황
+		- 여러개의 레코드를 한 번에 읽어오는 작업 반복.3.
+		3
+	
