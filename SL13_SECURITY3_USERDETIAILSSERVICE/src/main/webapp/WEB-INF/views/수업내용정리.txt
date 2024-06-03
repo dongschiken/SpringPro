@@ -1,0 +1,9 @@
+[SL06_NLMVC2]
+1. 인증처리
+   username - 사용자 아이디
+2. (암기) 
+	AM(인증 관리자)
+		PM(제공 관리자)
+			AP(인증 제공자 - 일꾼, 실무자) -> UDS 인증 정보 객체
+3. UDS == UserDetailsService 직접 구현하는 방법
+4. AuthVO.java

@@ -76,7 +76,7 @@ public class RESTController {
 	@PostMapping(value = "/idCheck", produces = { MediaType.APPLICATION_JSON_UTF8_VALUE })
 	   public int idCheck(String empno) {      
 		  return this.empMapper.idCheck(empno);  
-	      	
+	      
 	}
 	
 }

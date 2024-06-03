@@ -1,0 +1,45 @@
+[SL13_SECURITY2_JDBC]
+p.692
+users		회원 테이블
+authorities 권한 테이블
+
+id == username
+pwd == password
+enabled == ?
+
+enabled 컬럼 추가
+alter table member
+add (enabled char(1) default '1');
+
+id값 pk로 변경
+alter table member
+add constraint pk_member_id primary key(id);
+
+CREATE TABLE member_authorities(
+   username     varchar2(50) not null      
+  , authority    varchar2(50) not null 
+  , constraint fk_member_authorities_username 
+               FOREIGN KEY(username) 
+               REFERENCES member(id)
+);
+
+PasswordEncoder 임시 사용 X
+
+1. 처리과정
+
+	<property name="dataSource" ref="dataSource"></property> -> name값
+	
+	<!-- JDBC 로그인 처리 -->
+	data-source-ref name값 복붙
+	     <security:authentication-provider>
+	     	<security:jdbc-user-service 
+	     	data-source-ref="dataSource" 
+	     	users-by-username-query="SELECT id AS USERNAME, pwd AS PASSWORD, enabled FROM member WHERE id = ?"
+	        authorities-by-username-query="SELECT username AS userid, authority AS auth FROM member_authorities WHERE username = ?"
+	     	/>
+	     	<security:password-encoder ref="bCryptPasswordEncoder"/>
+	     </security:authentication-provider>
+	
+	bean태그 추가
+	<bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+     
