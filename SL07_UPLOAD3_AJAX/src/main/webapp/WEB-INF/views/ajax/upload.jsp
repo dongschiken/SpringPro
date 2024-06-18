@@ -61,6 +61,7 @@
 					type : 'POST',
 					success : function(result){
 						alert("ajax로 파일 업로드 성공!");
+						
 					}
 				})
   			}) // 클릭 닫기 부분
